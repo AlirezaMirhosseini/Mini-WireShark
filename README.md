@@ -1,2 +1,2 @@
 # Mini-WireShark
-Mini WireShark and mini EnMap
+Mini WireShark and mini Nmap
