@@ -8,7 +8,7 @@ def ether_sender(message,interface):
     s.send(pkt)
     s.close()
     print(f'Send {int(len(message)/2)}-byte packet on {interface}')
-
-# message = input('What is your packet content? ')
-# interface = input('Which interface do you want to use? ')   
-# ether_sender(message,interface) 
+if __name__ == "__main__":
+    message = input('What is your packet content? ')
+    interface = input('Which interface do you want to use? ')   
+    ether_sender(message,interface) 
