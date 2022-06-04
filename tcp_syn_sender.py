@@ -1,6 +1,15 @@
 from socket import *
-from pkt_sender import ether_sender
 from checksum3 import cs
+from binascii import unhexlify
+
+def ether_sender(message,interface):
+    pkt = unhexlify(message)
+    s = socket(AF_PACKET, SOCK_RAW)
+    s.bind((interface, 0))
+    s.send(pkt)
+    s.close()
+    print(f'Send {int(len(message)/2)}-byte TCP SYN packet on {interface}')
+
 fd = open('info.txt', 'r')
 lines = fd.readlines()
 for i in range(len(lines)):
