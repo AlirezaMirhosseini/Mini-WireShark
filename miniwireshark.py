@@ -11,3 +11,6 @@ def MacAddress(address): # from https://stackoverflow.com/questions/159137/getti
 def ether(data):
     dest_mac, src_mac, proto = unpack('! 6s 6s H', data[:14])
     return MacAddress(dest_mac), MacAddress(src_mac), htons(proto), data[14:]
+
+def ipv4_address(address):
+    return '.'.join(map(str, address))
