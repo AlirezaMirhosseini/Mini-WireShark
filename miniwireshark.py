@@ -1,8 +1,6 @@
 from socket import *
 from struct import *
 
-conn = socket(AF_PACKET, SOCK_RAW, ntohs(3))
-
 def MacAddress(address): # from https://stackoverflow.com/questions/159137/getting-mac-address
     bytes_string = map('{:02x}'.format, address)
     mac_address = ':'.join(bytes_string).upper()
@@ -26,3 +24,19 @@ def tcp(data):
     src_port, dest_port, sequence, ack, offset_reserved_flags = unpack('! H H L L H', data[:14])
     offset = (offset_reserved_flags >> 12) * 4
     return (src_port, dest_port, sequence, ack, data[offset:])
+
+conn = socket(AF_PACKET, SOCK_RAW, ntohs(3))
+
+while True:
+    raw_data, address = conn.recvfrom(65536)
+    dest_mac, src_mac, ethernet_protocol, data = ether(raw_data)
+
+    if ethernet_protocol == 8:
+        (version, header_length, ttl, proto, src, target, data) = ip(data)
+
+        if proto == 6:
+            (src_port, dest_port, sequence, ack, data) = tcp(data)
+
+        print('\tTCP Segment:')
+        print(f'\t\tSource Port: {src_port} / Destination Port: {dest_port}')
+        print(f'\t\tSequence: {sequence} / Ack: {ack}')
