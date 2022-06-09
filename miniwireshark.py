@@ -37,6 +37,7 @@ while True:
         if proto == 6:
             (src_port, dest_port, sequence, ack, data) = tcp(data)
 
-        print('\tTCP Segment:')
-        print(f'\t\tSource Port: {src_port} / Destination Port: {dest_port}')
-        print(f'\t\tSequence: {sequence} / Ack: {ack}')
+            if(src_port == 80 or dest_port == 80):
+                print('\tTCP Segment:')
+                print(f'\t\tSource Port: {src_port} / Destination Port: {dest_port}')
+                print(f'\t\tSequence: {sequence} / Ack: {ack}')
