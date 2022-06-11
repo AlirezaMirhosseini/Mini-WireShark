@@ -45,6 +45,10 @@ while True:
                 src_ip_address = src_ip_address.replace('.', '')
                 src_ip_address = src_ip_address.replace(' ', '.')
                 
+                dest_ip_address = dest_ip_address.replace('...', ' ') # format destination IP address
+                dest_ip_address = dest_ip_address.replace('.', '')
+                dest_ip_address = dest_ip_address.replace(' ', '.')
+                
                 print('\tTCP Segment:')
                 print(f'\t\tSource Port: {src_port} / Destination Port: {dest_port}')
                 print(f'\t\tSequence: {sequence} / Ack: {ack}  on {src_ip_address} to {dest_ip_address}')
