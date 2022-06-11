@@ -51,11 +51,12 @@ ip_seg = ver+diff+t_len+id+flags+ttl+proto4+cs3+src_ip+dest_ip
 ip_seg = ip_seg.replace(' ','')
 ip_seg = " ".join(ip_seg[i:i+2] for i in range(0, len(ip_seg), 2))
 cs3 = cs(ip_seg)
-
+print(f'cs3={cs3}')
 tcp_seg = src_ip+dest_ip+"00"+proto4+"00"+"14"+src_port+dest_port+seq_num+ack+h_len+w_size+"00 00"+up
 tcp_seg = tcp_seg.replace(' ','')
 tcp_seg = " ".join(tcp_seg[i:i+2] for i in range(0, len(tcp_seg), 2))
 cs4 = cs(tcp_seg)
+print(f'cs4={cs4}')
 
 message = dest_mac+src_mac+proto3 +ver +diff+t_len +id+flags+ttl+proto4+cs3+src_ip+dest_ip+src_port+dest_port +seq_num+ack +h_len+w_size +cs4 +up
 message = message.replace(' ','')

@@ -37,7 +37,10 @@ while True:
         if proto == 6:
             (src_port, dest_port, sequence, ack, data) = tcp(data)
 
-            if(src_port == 80 or dest_port == 80):
+            if(src_port == 80 or dest_port == 80): # just capture my packets
+                src_ip_address = ipv4_address(src)
+                dest_ip_address = ipv4_address(target)
+                
                 print('\tTCP Segment:')
                 print(f'\t\tSource Port: {src_port} / Destination Port: {dest_port}')
-                print(f'\t\tSequence: {sequence} / Ack: {ack}')
+                print(f'\t\tSequence: {sequence} / Ack: {ack}  on {src_ip_address} to {dest_ip_address}')
