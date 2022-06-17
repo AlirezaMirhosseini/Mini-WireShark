@@ -37,7 +37,7 @@ while True:
         if proto == 6:
             (src_port, dest_port, sequence, ack, data) = tcp(data)
 
-            if(src_port == 80 or dest_port == 80): # just capture my packets
+            if(dest_port == 3000 and ack != 0): # just capture my packets
                 src_ip_address = ipv4_address(src)
                 dest_ip_address = ipv4_address(target)
                 
