@@ -6,7 +6,7 @@ conn = socket(AF_PACKET, SOCK_RAW, ntohs(3))
 def ether(data):
     dest_mac, src_mac, proto = unpack('! 6s 6s H', data[:14])
     
-    bytes_str = map('{:02x}'.format, dest_mac) # from https://stackoverflow.com/questions/159137/getting-mac-address
+    bytes_str = map('{:02x}'.format, dest_mac)
     dest_mac_address = ':'.join(bytes_str).upper()
     
     bytes_str = map('{:02x}'.format, src_mac)
@@ -41,15 +41,15 @@ while True:
 
         if proto == 6:
                 (src_port, dest_port, sequence, ack, urg, flagAck, flagpsh, flagRst, flagSyn, flagFin, data) = tcp(data)
-                if(dest_port == 3000 and flagAck == 1 and flagSyn == 1): # just capture my packets
+                if(dest_port == 3000 and flagAck == 1 and flagSyn == 1):
                     src_ip_address = '.'.join(map(str, src))
                     dest_ip_address = '.'.join(map(str, target))
                     
-                    src_ip_address = src_ip_address.replace('...', ' ') # format source IP address
+                    src_ip_address = src_ip_address.replace('...', ' ')
                     src_ip_address = src_ip_address.replace('.', '')
                     src_ip_address = src_ip_address.replace(' ', '.')
                     
-                    dest_ip_address = dest_ip_address.replace('...', ' ') # format destination IP address
+                    dest_ip_address = dest_ip_address.replace('...', ' ') 
                     dest_ip_address = dest_ip_address.replace('.', '')
                     dest_ip_address = dest_ip_address.replace(' ', '.')
                     
