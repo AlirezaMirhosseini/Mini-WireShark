@@ -36,6 +36,7 @@ for i in ip:
     
 # src_ip = int(inet_aton(lines[2]),16)#.encode("hex")
 dest_ip_decimal = input('What is the target IP address? ')
+
 dest_ip_decimal = inet_aton(dest_ip_decimal)
 dest_ip = str()
 
