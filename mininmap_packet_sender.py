@@ -34,17 +34,17 @@ src_ip = str()
 for i in ip:
     src_ip = src_ip + "{:02x}".format(i)
     
-# src_ip = int(inet_aton(lines[2]),16)#.encode("hex")
-dest_ip_decimal = input('What is the target IP address? ')
+dest_ip_decimal = input('What is the target IP address? (default = 93.184.216.34)')
+if dest_ip_decimal == "":
+    dest_ip_decimal = "93.184.216.34"
+
 dest_ip_decimal = inet_aton(dest_ip_decimal)
 dest_ip = str()
 
 for i in dest_ip_decimal:
     dest_ip = dest_ip + "{:02x}".format(i)
-# dest_ip = str(inet_aton(lines[0]),'utf-8')#.encode("hex")
 
 src_port = "%04x" % int(lines[3])
-# dest_port = "%04x" %int(lines[1])
 seq_num = "174930d1"
 ack = "00000000"
 h_len = "5002"
