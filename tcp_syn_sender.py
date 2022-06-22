@@ -33,12 +33,10 @@ src_ip = str()
 for i in ip:
     src_ip = src_ip + "{:02x}".format(i)
     
-# src_ip = int(inet_aton(lines[2]),16)#.encode("hex")
 ip = inet_aton(lines[0])
 dest_ip = str()
 for i in ip:
     dest_ip = dest_ip + "{:02x}".format(i)
-# dest_ip = str(inet_aton(lines[0]),'utf-8')#.encode("hex")
 
 src_port = "%04x" % int(lines[3])
 dest_port = "%04x" % int(lines[1])

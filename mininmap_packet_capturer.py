@@ -49,12 +49,8 @@ while True:
                     src_ip_address = src_ip_address.replace('.', '')
                     src_ip_address = src_ip_address.replace(' ', '.')
                     
-                    dest_ip_address = dest_ip_address.replace('...', ' ') 
+                    dest_ip_address = dest_ip_address.replace('...', ' ')
                     dest_ip_address = dest_ip_address.replace('.', '')
                     dest_ip_address = dest_ip_address.replace(' ', '.')
                     
-                    print('\n\tA TCP Segment Captured:')
-                    print(f'\t\tSource Port: {src_port} / Destination Port: {dest_port}')
-                    print(f'\t\tSequence Number: {sequence} / Ack: {ack}')
-                    print(f'\t\ton  {src_ip_address}  to  {dest_ip_address}')
-                    print(f'\t\twith  Flag Syn: {flagSyn}  and  Flag Ack: {flagAck}\n')
+                    print(f'\tPort {src_port} is open on {src_ip_address}')
