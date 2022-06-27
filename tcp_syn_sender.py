@@ -1,4 +1,5 @@
 from syn_send import send_syn
+from socket import *
 
 fd = open('info.txt', 'r')
 lines = fd.readlines()
