@@ -30,7 +30,7 @@ def send_syn(src_ip, src_port, dest_ip, dest_port, src_mac, dest_mac, interface)
     ip_seg = ip_seg.replace(' ', '')
     ip_seg = " ".join(ip_seg[i:i + 2] for i in range(0, len(ip_seg), 2))
     cs3 = cs(ip_seg)
-    print(f'on {dest_port}')
+    print(f'on {int(dest_port, 16)}')
     tcp_seg = src_ip + dest_ip + "00" + proto4 + "00" + "14" + src_port + dest_port + seq_num + ack + h_len + w_size + "00 00" + up
     tcp_seg = tcp_seg.replace(' ', '')
     tcp_seg = " ".join(tcp_seg[i:i + 2] for i in range(0, len(tcp_seg), 2))
